@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resource-testing
+spec:
+  containers:
+    - name: test
+      image: docker.io/nginx
+      resources:
+       limits:
+         memory: "400Mi"
+         cpu: "600m"

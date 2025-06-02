@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ namespace: opa-test
+ name: testtt
+spec:
+ containers:
+  - name: testi
+    image: ghcr.io/nginx

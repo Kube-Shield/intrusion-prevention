@@ -1,0 +1,19 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sPSPSeccompV2
+metadata:
+  name: psp-seccomp
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+    namespaces:
+      - "opa-test"
+  parameters:
+    exemptImages:
+    - nginx-exempt 
+    allowedProfiles:
+    - RuntimeDefault
+    - Localhost
+    allowedLocalhostFiles:
+    - "*"

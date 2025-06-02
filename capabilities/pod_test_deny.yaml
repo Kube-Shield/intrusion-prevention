@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-capabilities
+  namespace: opa-test
+spec:
+  containers:
+    - name: demo-container
+      image: alpine
+      command: ["sleep", "3600"]
+      securityContext:
+        capabilities:
+          add: ["CAP_BPF"]
+          drop: []
+
