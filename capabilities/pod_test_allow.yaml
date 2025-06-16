@@ -2,14 +2,12 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: pod-with-capabilities
-  namespace: opa-test
+  namespace: crapi
 spec:
   containers:
     - name: demo-container
-      image: alpine
+      image: docker.io/library/alpine
       command: ["sleep", "3600"]
       securityContext:
         capabilities:
-          add: ["NET_ADMIN", "SYS_TIME"]
-          drop: ["AUDIT_WRITE", "MKNOD"]
-
+          drop: ["ALL"]

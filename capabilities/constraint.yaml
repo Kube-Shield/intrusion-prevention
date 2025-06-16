@@ -8,7 +8,7 @@ spec:
       - apiGroups: [""]
         kinds: ["Pod"]
     namespaces:
-      - "default"
+      - "crapi"
   parameters:
-    allowedCapabilities: ["something"]
-    requiredDropCapabilities: ["must_drop"]
+    allowedCapabilities: []
+    requiredDropCapabilities: ["ALL"]

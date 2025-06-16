@@ -8,8 +8,7 @@ spec:
       - apiGroups: [""]
         kinds: ["Pod"]
     namespaces:
-      - "opa-test"
+      - "crapi"
   parameters:
-    cpu: "${CPU_LIMIT}"
-    memory: "${MEMORY_LIMIT}"
-
+    cpu: "1"
+    memory: "1Gi"

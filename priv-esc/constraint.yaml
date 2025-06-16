@@ -8,6 +8,6 @@ spec:
       - apiGroups: [""]
         kinds: ["Pod"]
     namespaces:
-      - "opa-test"
+      - "crapi"
   parameters:
-    exemptImages: ["docker.io/ghaith3/safe*"]
+    exemptImages: []

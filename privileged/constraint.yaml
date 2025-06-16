@@ -7,10 +7,7 @@ spec:
     kinds:
       - apiGroups: [""]
         kinds: ["Pod"]
-    excludedNamespaces: ["kube-system"]
     namespaces:
-      - "opa-test"
-      - "kube-system"
+      - "crapi"
   parameters:
-    exemptImages:
-    - "safeimages.com/*"
+    exemptImages: []

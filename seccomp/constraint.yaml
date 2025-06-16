@@ -8,12 +8,7 @@ spec:
       - apiGroups: [""]
         kinds: ["Pod"]
     namespaces:
-      - "opa-test"
+      - "crapi"
   parameters:
-    exemptImages:
-    - nginx-exempt 
     allowedProfiles:
-    - RuntimeDefault
-    - Localhost
-    allowedLocalhostFiles:
-    - "*"
+      - RuntimeDefault

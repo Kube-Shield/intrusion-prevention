@@ -8,7 +8,11 @@ spec:
       - apiGroups: [""]
         kinds: ["Pod"]
     namespaces:
-      - "opa-test"
+      - "crapi"
   parameters:
     repos:
       - "docker.io/"
+      - "crapi/"
+      - "groundnuty/"
+      - "postgres"
+      - "mongo"
