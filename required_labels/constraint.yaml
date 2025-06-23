@@ -3,6 +3,7 @@ kind: K8sRequiredLabels
 metadata:
   name: all-must-have-owner
 spec:
+  enforcementAction: deny
   match:
     kinds:
       - apiGroups: [""]

@@ -3,6 +3,7 @@ kind: K8sAllowedRepos
 metadata:
   name: repo-is-dockerhub
 spec:
+  enforcementAction: deny
   match:
     kinds:
       - apiGroups: [""]
