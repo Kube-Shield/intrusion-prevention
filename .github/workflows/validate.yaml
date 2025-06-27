@@ -1,0 +1,19 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  gatekeeper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install gator
+        run: |
+          curl -sL -o gator.tar.gz https://github.com/open-policy-agent/gatekeeper/releases/download/v3.23.1/gator-v3.23.1-linux-amd64.tar.gz
+          tar xzf gator.tar.gz
+          sudo mv gator /usr/local/bin/gator
+      - name: Verify constraints
+        run: gator verify suite.yaml

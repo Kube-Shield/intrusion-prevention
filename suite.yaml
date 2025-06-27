@@ -1,0 +1,93 @@
+kind: Suite
+apiVersion: test.gatekeeper.sh/v1alpha1
+tests:
+  - name: allowed-repos
+    template: allowed_repos/template.yaml
+    constraint: allowed_repos/constraint.yaml
+    cases:
+      - name: allow-dockerhub
+        object: allowed_repos/pod_test_allow.yaml
+        assertions:
+          - violations: no
+      - name: deny-ghcr
+        object: allowed_repos/pod_test_deny.yaml
+        assertions:
+          - violations: yes
+
+  - name: capabilities
+    template: capabilities/template.yaml
+    constraint: capabilities/constraint.yaml
+    cases:
+      - name: allow-drop-all
+        object: capabilities/pod_test_allow.yaml
+        assertions:
+          - violations: no
+      - name: deny-added-capability
+        object: capabilities/pod_test_deny.yaml
+        assertions:
+          - violations: yes
+
+  - name: privilege-escalation
+    template: priv-esc/template.yaml
+    constraint: priv-esc/constraint.yaml
+    cases:
+      - name: allow-no-escalation
+        object: priv-esc/pod_test_allow.yaml
+        assertions:
+          - violations: no
+      - name: deny-escalation
+        object: priv-esc/pod_test_deny.yaml
+        assertions:
+          - violations: yes
+
+  - name: privileged
+    template: privileged/template.yaml
+    constraint: privileged/constraint.yaml
+    cases:
+      - name: allow-unprivileged
+        object: privileged/test_pod_allow.yaml
+        assertions:
+          - violations: no
+      - name: deny-privileged
+        object: privileged/test_pod_deny.yaml
+        assertions:
+          - violations: yes
+
+  - name: required-labels
+    template: required_labels/template.yaml
+    constraint: required_labels/constraint.yaml
+    cases:
+      - name: allow-owner
+        object: required_labels/test_pod_allow.yaml
+        assertions:
+          - violations: no
+      - name: deny-missing-owner
+        object: required_labels/test_pod_deny.yaml
+        assertions:
+          - violations: yes
+
+  - name: resource-limits
+    template: resource_limits/template.yaml
+    constraint: resource_limits/constraint.yaml
+    cases:
+      - name: allow-within-limits
+        object: resource_limits/pod_test_allow.yaml
+        assertions:
+          - violations: no
+      - name: deny-over-limits
+        object: resource_limits/pod_test_deny.yaml
+        assertions:
+          - violations: yes
+
+  - name: seccomp
+    template: seccomp/template.yaml
+    constraint: seccomp/constraint.yaml
+    cases:
+      - name: allow-runtime-default
+        object: seccomp/pod_test_allow.yaml
+        assertions:
+          - violations: no
+      - name: deny-missing-profile
+        object: seccomp/pod_test_deny.yaml
+        assertions:
+          - violations: yes
